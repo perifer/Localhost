@@ -1,0 +1,10 @@
+# Setup:
+#
+# cp ~/Localhost/config/mysql/my.cnf.example ~/Localhost/config/mysql/my.cnf && ln -s ~/Localhost/config/mysql/my.cnf ~/.my.cnf
+
+[mysqld]
+max_allowed_packet=500M
+
+[client]
+user=root
+password=

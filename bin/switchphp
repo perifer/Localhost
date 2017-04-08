@@ -1,0 +1,35 @@
+#!/usr/bin/env php
+<?php
+
+$supported = array('56', '70', '71');
+
+if (!isset($argv[1]) || !in_array($argv[1], $supported)) {
+  exit("Please provide a supported version\n");
+}
+
+$newversion = $argv[1];
+
+if (version_compare(PHP_VERSION, '5.6.0') >= 0 && version_compare(PHP_VERSION, '5.7.0') < 1) {
+  $oldversion = '56';
+} elseif (version_compare(PHP_VERSION, '7.0.0') >= 0 && version_compare(PHP_VERSION, '7.1.0') < 1) {
+	$oldversion = '70';
+} elseif (version_compare(PHP_VERSION, '7.1.0') >= 0 && version_compare(PHP_VERSION, '7.2.0') < 1) {
+	$oldversion = '71';
+} else {
+  $oldversion = false;
+}
+
+if ($oldversion == $newversion) {
+  exit("Already on PHP " . PHP_VERSION . "\n");
+} elseif ($oldversion) {
+  exec("brew unlink php$oldversion && brew link php$newversion");
+  $apache_config_dir = dirname(__DIR__) . '/config/apache/';
+  exec("cd $apache_config_dir && ln -sf php-modules-available/php$newversion.conf php.conf");
+  exec('sudo apachectl restart');
+  echo "Swithed to ";
+  exec('php -v', $output);
+  echo $output[0];
+}
+else {
+  exit("Could not switch version\n");
+}
