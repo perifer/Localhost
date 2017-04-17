@@ -36,7 +36,7 @@ switchphp 71
 Install all dependencies:
 
 ```
-brew install httpd24 mysql dnsmasq
+brew install homebrew/apache/httpd24 mysql dnsmasq
 
 brew install homebrew/php/php56 --with-httpd24
 brew unlink homebrew/php/php56

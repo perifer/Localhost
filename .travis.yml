@@ -1,0 +1,5 @@
+language: bash
+os: osx
+osx_image: xcode8.3
+install: ./install.sh
+script: ./test.sh
