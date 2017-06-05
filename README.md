@@ -49,7 +49,7 @@ Clone the repo in your home directory. Copy `~/Localhost/config/mysql/my.cnf.exa
 
 ```
 git clone https://github.com/perifer/Localhost.git ~/Localhost
-cp ~/Localhost/config/mysql/my.cnf.example cp ~/Localhost/config/mysql/my.cnf
+cp ~/Localhost/config/mysql/my.cnf.example ~/Localhost/config/mysql/my.cnf
 nano ~/Localhost/config/mysql/my.cnf
 ```
 
