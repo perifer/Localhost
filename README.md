@@ -87,9 +87,9 @@ Secure MySQL. Set the password to the same one you added in `~/Localhost/config/
 
 `mysql_secure_installation`
 
-Setup Apache log file (this is needed if you run Apache a separate user, which is the default):
+Setup Apache log file (this is ONLY needed if you run Apache a separate user, which is the default):
 
 ```
 touch ~/Localhost/logs/php-apache.log
-sudo chmod _www:_www ~/Localhost/logs/php-apache.log
+sudo chown _www:_www ~/Localhost/logs/php-apache.log
 ```
