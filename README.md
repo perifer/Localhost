@@ -56,7 +56,7 @@ nano ~/Localhost/config/mysql/my.cnf
 Enable the config files and switchphp utility:
 
 ```
-echo "Include \${HOME}/Localhost/config/apache/httpd.conf" /usr/local/etc/apache2/2.4/httpd.conf
+echo "Include \${HOME}/Localhost/config/apache/httpd.conf" >> /usr/local/etc/apache2/2.4/httpd.conf
 ln -s ~/Localhost/config/apache/php-modules-available/php71.conf ~/Localhost/config/apache/php.conf
 
 ln -s ~/Localhost/config/mysql/my.cnf /usr/local/etc/
