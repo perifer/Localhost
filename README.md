@@ -1,6 +1,6 @@
 # Apache, MySQL and PHP on macOS
 
-Local PHP development with minimal work to add new sites. Create a directory, e.g. `site.dev/public_html` and add your files – that's all. No config files to edit, no server to restart.
+Local PHP development with minimal work to add new sites. Create a directory, e.g. `site.test/public_html` and add your files – that's all. No config files to edit, no server to restart.
 
 Other features:
 
@@ -13,8 +13,8 @@ Other features:
 Many projects have their web root in a subfolder or call it something else then `public_html`. Therefore the recommended approach is to use a symlink for `public_html`.
 
 ```
-mkdir -p ~/Sites/site.dev/
-cd ~/Sites/site.dev
+mkdir -p ~/Sites/site.test/
+cd ~/Sites/site.test
 ln -s site/path/to/web_root public_html
 ```
 
@@ -36,13 +36,13 @@ switchphp 71
 Install all dependencies:
 
 ```
-brew install homebrew/apache/httpd24 mysql dnsmasq
+brew install httpd mysql dnsmasq
 
-brew install homebrew/php/php56 --with-httpd24
+brew install homebrew/php/php56 --with-httpd
 brew unlink homebrew/php/php56
-brew install homebrew/php/php70 --with-httpd24
+brew install homebrew/php/php70 --with-httpd
 brew unlink homebrew/php/php70
-brew install homebrew/php/php71 --with-httpd24
+brew install homebrew/php/php71 --with-httpd
 ```
 
 Clone the repo in your home directory. Copy `~/Localhost/config/mysql/my.cnf.example`, name it `my.cnf` and add a password. Like this:
@@ -56,7 +56,7 @@ nano ~/Localhost/config/mysql/my.cnf
 Enable the config files and switchphp utility:
 
 ```
-echo "Include \${HOME}/Localhost/config/apache/httpd.conf" >> /usr/local/etc/apache2/2.4/httpd.conf
+echo "Include \${HOME}/Localhost/config/apache/httpd.conf" >> /usr/local/etc/httpd/httpd.conf
 ln -s ~/Localhost/config/apache/php-modules-available/php71.conf ~/Localhost/config/apache/php.conf
 
 ln -s ~/Localhost/config/mysql/my.cnf /usr/local/etc/
@@ -68,7 +68,7 @@ ln -s ~/Localhost/config/php/php.ini /usr/local/etc/php/7.1/conf.d/
 
 ln -s ~/Localhost/config/dnsmasq/dnsmasq.conf /usr/local/etc/dnsmasq.conf
 sudo mkdir -p /etc/resolver
-sudo ln -s ~/Localhost/config/dnsmasq/dev /etc/resolver/dev
+sudo ln -s ~/Localhost/config/dnsmasq/test /etc/resolver/test
 
 ln -s ~/Localhost/bin/switchphp /usr/local/bin/
 ```
@@ -78,7 +78,7 @@ Remove or comment out all lines starting with `LoadModule php5_module` or `LoadM
 Start all services:
 
 ```
-sudo brew services start httpd24
+sudo brew services start httpd
 brew services start mysql
 sudo brew services start dnsmasq
 ```
