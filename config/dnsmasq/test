@@ -1,0 +1,5 @@
+# Setup:
+#
+# sudo mkdir -p /etc/resolver && sudo ln -s ~/Localhost/config/dnsmasq/test /etc/resolver/test
+
+nameserver 127.0.0.1
