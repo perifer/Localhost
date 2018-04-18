@@ -24,6 +24,7 @@ ln -s site/path/to/web_root public_html
 switchphp 56
 switchphp 70
 switchphp 71
+switchphp 72
 ```
 
 ## Requirements
@@ -43,6 +44,8 @@ brew unlink homebrew/php/php56
 brew install homebrew/php/php70 --with-httpd
 brew unlink homebrew/php/php70
 brew install homebrew/php/php71 --with-httpd
+brew unlink homebrew/php/php71
+brew install homebrew/php/php72 --with-httpd
 ```
 
 Clone the repo in your home directory. Copy `~/Localhost/config/mysql/my.cnf.example`, name it `my.cnf` and add a password. Like this:
@@ -65,6 +68,7 @@ mkdir -p /usr/local/etc/php/5.6/conf.d/ /usr/local/etc/php/7.0/conf.d/ /usr/loca
 ln -s ~/Localhost/config/php/php.ini /usr/local/etc/php/5.6/conf.d/
 ln -s ~/Localhost/config/php/php.ini /usr/local/etc/php/7.0/conf.d/
 ln -s ~/Localhost/config/php/php.ini /usr/local/etc/php/7.1/conf.d/
+ln -s ~/Localhost/config/php/php.ini /usr/local/etc/php/7.2/conf.d/
 
 ln -s ~/Localhost/config/dnsmasq/dnsmasq.conf /usr/local/etc/dnsmasq.conf
 sudo mkdir -p /etc/resolver
@@ -93,3 +97,9 @@ Setup Apache log file (this is ONLY needed if you run Apache a separate user, wh
 touch ~/Localhost/logs/php-apache.log
 sudo chown _www:_www ~/Localhost/logs/php-apache.log
 ```
+
+## Recommended PHP extensions
+
+* phpXX-opcache
+* phpXX-mcrypt
+* phpXX-xdebug
