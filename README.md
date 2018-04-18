@@ -12,7 +12,7 @@ Other features:
 
 Many projects have their web root in a subfolder or call it something else then `public_html`. Therefore the recommended approach is to use a symlink for `public_html`.
 
-```
+```bash
 mkdir -p ~/Sites/site.test/
 cd ~/Sites/site.test
 ln -s site/path/to/web_root public_html
@@ -20,7 +20,7 @@ ln -s site/path/to/web_root public_html
 
 ## Switch PHP version
 
-```
+```bash
 switchphp 56
 switchphp 70
 switchphp 71
@@ -36,7 +36,7 @@ switchphp 72
 
 Install all dependencies:
 
-```
+```bash
 brew install httpd mysql dnsmasq
 
 brew install homebrew/php/php56 --with-httpd
@@ -50,7 +50,7 @@ brew install homebrew/php/php72 --with-httpd
 
 Clone the repo in your home directory. Copy `~/Localhost/config/mysql/my.cnf.example`, name it `my.cnf` and add a password. Like this:
 
-```
+```bash
 git clone https://github.com/perifer/Localhost.git ~/Localhost
 cp ~/Localhost/config/mysql/my.cnf.example ~/Localhost/config/mysql/my.cnf
 nano ~/Localhost/config/mysql/my.cnf
@@ -58,7 +58,7 @@ nano ~/Localhost/config/mysql/my.cnf
 
 Enable the config files and switchphp utility:
 
-```
+```bash
 echo "Include \${HOME}/Localhost/config/apache/httpd.conf" >> /usr/local/etc/httpd/httpd.conf
 ln -s ~/Localhost/config/apache/php-modules-available/php71.conf ~/Localhost/config/apache/php.conf
 
@@ -81,7 +81,7 @@ Remove or comment out all lines starting with `LoadModule php5_module` or `LoadM
 
 Start all services:
 
-```
+```bash
 sudo brew services start httpd
 brew services start mysql
 sudo brew services start dnsmasq
@@ -93,7 +93,7 @@ Secure MySQL. Set the password to the same one you added in `~/Localhost/config/
 
 Setup Apache log file (this is ONLY needed if you run Apache a separate user, which is the default):
 
-```
+```bash
 touch ~/Localhost/logs/php-apache.log
 sudo chown _www:_www ~/Localhost/logs/php-apache.log
 ```
