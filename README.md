@@ -29,7 +29,7 @@ switchphp 72
 
 ## Requirements
 
-* Tested on macOS Sierra
+* Tested on macOS High Sierra
 * [Homebrew](https://brew.sh)
 
 ## Installation
